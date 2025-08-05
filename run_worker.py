@@ -12,7 +12,8 @@ def run_worker():
     # コンシューマーを起動
     from huey.consumer import Consumer
     
-    consumer = Consumer(huey)
+    # consumer = Consumer(huey)               # シングルスレッド
+    consumer = Consumer(huey, workers=2)    # マルチスレッド
     consumer.run()
 
 if __name__ == "__main__":
